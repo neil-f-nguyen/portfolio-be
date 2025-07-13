@@ -1,7 +1,24 @@
+// @title Portfolio Backend API
+// @version 1.0
+// @description API for portfolio website backend
+// @termsOfService http://swagger.io/terms/
+
+// @contact.name API Support
+// @contact.url http://www.swagger.io/support
+// @contact.email support@swagger.io
+
+// @license.name MIT
+// @license.url https://opensource.org/licenses/MIT
+
+// @host localhost:8080
+// @BasePath /
+// @schemes http https
+
 package main
 
 import (
 	"log"
+	"net/http"
 	"os"
 	"portfolio-backend/database"
 	"portfolio-backend/handlers"
@@ -11,6 +28,11 @@ import (
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
+	swaggerFiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
+
+	// Import swagger docs
+	_ "portfolio-backend/docs"
 )
 
 func main() {
@@ -41,15 +63,24 @@ func main() {
 
 	// CORS configuration
 	config := cors.DefaultConfig()
-	config.AllowOrigins = []string{"http://localhost:3000", "http://localhost:3001", os.Getenv("FRONTEND_URL")}
+	frontendURL := os.Getenv("FRONTEND_URL")
+	config.AllowOrigins = []string{"http://localhost:3000", "http://localhost:3001", frontendURL}
 	config.AllowCredentials = true
-	log.Println("FRONTEND_URL", os.Getenv("FRONTEND_URL"))
+	log.Println("FRONTEND_URL", frontendURL)
 	config.AllowMethods = []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"}
 	config.AllowHeaders = []string{"Origin", "Content-Type", "Accept", "Authorization"}
 	r.Use(cors.New(config))
 
 	// Register routes
 	routes.RegisterRoutes(r, h)
+
+	// Swagger route
+	r.GET("/api-docs/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+
+	// Redirect /api-docs to /api-docs/index.html
+	r.GET("/api-docs", func(c *gin.Context) {
+		c.Redirect(http.StatusMovedPermanently, "/api-docs/index.html")
+	})
 
 	// Get port from environment or use default
 	port := os.Getenv("PORT")
@@ -58,6 +89,7 @@ func main() {
 	}
 
 	log.Printf("Server starting on port %s", port)
+	log.Printf("Swagger UI available at http://localhost:%s/api-docs", port)
 	if err := r.Run(":" + port); err != nil {
 		log.Fatal("Failed to start server:", err)
 	}

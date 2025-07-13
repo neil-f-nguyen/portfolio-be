@@ -1,0 +1,494 @@
+basePath: /
+definitions:
+  models.AboutCard:
+    properties:
+      created_at:
+        example: "2023-01-01T00:00:00Z"
+        type: string
+      description:
+        example: Creating beautiful interfaces and excellent user experiences
+        type: string
+      display_order:
+        example: 1
+        type: integer
+      gradient_colors:
+        example:
+        - '#3B82F6'
+        - '#8B5CF6'
+        - '#EC4899'
+        items:
+          type: string
+        type: array
+      hover_rotate_y:
+        example: 10
+        type: integer
+      icon:
+        example: "\U0001F3A8"
+        type: string
+      id:
+        example: 1
+        type: integer
+      title:
+        example: Creative Design
+        type: string
+      updated_at:
+        example: "2023-01-01T00:00:00Z"
+        type: string
+    type: object
+  models.Experience:
+    properties:
+      company:
+        example: TechCorp Solutions
+        type: string
+      current:
+        example: true
+        type: boolean
+      description:
+        example: Developed and optimized UI for web products
+        type: string
+      end_date:
+        example: "2023-12-31T00:00:00Z"
+        type: string
+      id:
+        example: 1
+        type: integer
+      location:
+        example: Hanoi, Vietnam
+        type: string
+      logo:
+        example: https://example.com/company-logo.png
+        type: string
+      position:
+        example: Frontend Developer
+        type: string
+      start_date:
+        example: "2022-01-01T00:00:00Z"
+        type: string
+      technologies:
+        example:
+        - React
+        - Next.js
+        - TypeScript
+        items:
+          type: string
+        type: array
+    type: object
+  models.FunFact:
+    properties:
+      created_at:
+        example: "2023-01-01T00:00:00Z"
+        type: string
+      display_order:
+        example: 1
+        type: integer
+      emoji:
+        example: ☕
+        type: string
+      id:
+        example: 1
+        type: integer
+      rotate_angle:
+        example: -2
+        type: integer
+      text:
+        example: Coffee addict\n3+ cups/day
+        type: string
+      updated_at:
+        example: "2023-01-01T00:00:00Z"
+        type: string
+    type: object
+  models.Goal:
+    properties:
+      color:
+        example: green
+        type: string
+      created_at:
+        example: "2023-01-01T00:00:00Z"
+        type: string
+      display_order:
+        example: 1
+        type: integer
+      id:
+        example: 1
+        type: integer
+      title:
+        example: Build scalable web apps
+        type: string
+      updated_at:
+        example: "2023-01-01T00:00:00Z"
+        type: string
+    type: object
+  models.LearningItem:
+    properties:
+      color:
+        example: blue
+        type: string
+      created_at:
+        example: "2023-01-01T00:00:00Z"
+        type: string
+      display_order:
+        example: 1
+        type: integer
+      id:
+        example: 1
+        type: integer
+      title:
+        example: Next.js 14 & App Router
+        type: string
+      updated_at:
+        example: "2023-01-01T00:00:00Z"
+        type: string
+    type: object
+  models.Profile:
+    properties:
+      about:
+        example: Frontend Developer with 3 years of experience
+        type: string
+      avatar:
+        example: https://example.com/avatar.jpg
+        type: string
+      created_at:
+        example: "2023-01-01T00:00:00Z"
+        type: string
+      email:
+        example: tu.nguyen@example.com
+        type: string
+      github:
+        example: https://github.com/tunguyen
+        type: string
+      id:
+        example: 1
+        type: integer
+      linkedin:
+        example: https://linkedin.com/in/tunguyen
+        type: string
+      location:
+        example: Hanoi, Vietnam
+        type: string
+      name:
+        example: Nguyen Anh Tu
+        type: string
+      phone:
+        example: +84 123 456 789
+        type: string
+      title:
+        example: Frontend Developer
+        type: string
+      updated_at:
+        example: "2023-01-01T00:00:00Z"
+        type: string
+      website:
+        example: https://tuportfolio.com
+        type: string
+    type: object
+  models.Project:
+    properties:
+      created_at:
+        example: "2023-01-01T00:00:00Z"
+        type: string
+      demo:
+        example: https://ecommerce.tuportfolio.com
+        type: string
+      description:
+        example: Modern e-commerce platform with online payment
+        type: string
+      featured:
+        example: true
+        type: boolean
+      github:
+        example: https://github.com/tunguyen/ecommerce
+        type: string
+      id:
+        example: 1
+        type: integer
+      image:
+        example:
+        - https://example.com/image1.jpg
+        - https://example.com/image2.jpg
+        items:
+          type: string
+        type: array
+      technologies:
+        example:
+        - React
+        - TypeScript
+        - Node.js
+        items:
+          type: string
+        type: array
+      title:
+        example: E-Commerce Platform
+        type: string
+      updated_at:
+        example: "2023-01-01T00:00:00Z"
+        type: string
+    type: object
+  models.Skill:
+    properties:
+      category:
+        example: Frontend
+        type: string
+      icon_url:
+        example: https://example.com/react-icon.svg
+        type: string
+      id:
+        example: 1
+        type: integer
+      level:
+        example: Advanced
+        type: string
+      name:
+        example: React
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  description: API for portfolio website backend
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  termsOfService: http://swagger.io/terms/
+  title: Portfolio Backend API
+  version: "1.0"
+paths:
+  /api/about-cards:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of about cards for "What Drives Me" section
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.AboutCard'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Get about cards
+      tags:
+      - About
+  /api/experiences:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of all work experiences
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Experience'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Get all experiences
+      tags:
+      - Experiences
+  /api/fun-facts:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of fun facts
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.FunFact'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Get fun facts
+      tags:
+      - About
+  /api/goals:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of goals ahead
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Goal'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Get goals
+      tags:
+      - About
+  /api/health:
+    get:
+      consumes:
+      - application/json
+      description: Check if the API is running
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Health check endpoint
+      tags:
+      - Health
+  /api/learning-items:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of currently learning items
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.LearningItem'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Get learning items
+      tags:
+      - About
+  /api/profile:
+    get:
+      consumes:
+      - application/json
+      description: Get the user's profile information
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Profile'
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Get user profile
+      tags:
+      - Profile
+  /api/projects:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of all projects
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Project'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Get all projects
+      tags:
+      - Projects
+  /api/skills:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of all skills
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Skill'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Get all skills
+      tags:
+      - Skills
+  /api/upload/image:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Upload an image file to the server
+      parameters:
+      - description: Image file
+        in: formData
+        name: image
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Upload an image
+      tags:
+      - Upload
+schemes:
+- http
+- https
+swagger: "2.0"

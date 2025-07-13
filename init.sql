@@ -29,7 +29,7 @@ CREATE TABLE projects (
     id SERIAL PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     description TEXT,
-    image VARCHAR(500),
+    image TEXT[],
     technologies TEXT[],
     github VARCHAR(255),
     demo VARCHAR(255),
@@ -107,9 +107,9 @@ INSERT INTO profiles (name, title, email, phone, location, website, github, link
 ('Nguyen Anh Tu', 'Frontend Developer', 'tu.nguyen@example.com', '+84 123 456 789', 'Hanoi, Vietnam', 'https://tuportfolio.com', 'https://github.com/tunguyen', 'https://linkedin.com/in/tunguyen', 'https://dummyimage.com/200x200/000/fff&text=TU', 'Frontend Developer with 3 years of experience in web development. Specialized in React, TypeScript and Next.js.');
 
 INSERT INTO projects (title, description, image, technologies, github, demo, featured) VALUES
-('E-Commerce Platform', 'Modern e-commerce platform with online payment and order management.', 'https://dummyimage.com/600x400/000/fff&text=E-Commerce', ARRAY['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Stripe'], 'https://github.com/tunguyen/ecommerce', 'https://ecommerce.tuportfolio.com', true),
-('Task Management App', 'Task management application with intuitive interface and collaboration features.', 'https://dummyimage.com/600x400/000/fff&text=Task+App', ARRAY['Next.js', 'TypeScript', 'TailwindCSS', 'Prisma', 'PostgreSQL'], 'https://github.com/tunguyen/taskapp', 'https://taskapp.tuportfolio.com', false),
-('Portfolio Website', 'Personal portfolio website with responsive design and modern UI.', 'https://dummyimage.com/600x400/000/fff&text=Portfolio', ARRAY['Next.js', 'TypeScript', 'TailwindCSS', 'Framer Motion'], 'https://github.com/tunguyen/portfolio', 'https://tuportfolio.com', true);
+('E-Commerce Platform', 'Modern e-commerce platform with online payment and order management.', ARRAY['https://dummyimage.com/600x400/000/fff&text=E-Commerce'], ARRAY['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Stripe'], 'https://github.com/tunguyen/ecommerce', 'https://ecommerce.tuportfolio.com', true),
+('Task Management App', 'Task management application with intuitive interface and collaboration features.', ARRAY['https://dummyimage.com/600x400/000/fff&text=Task+App'], ARRAY['Next.js', 'TypeScript', 'TailwindCSS', 'Prisma', 'PostgreSQL'], 'https://github.com/tunguyen/taskapp', 'https://taskapp.tuportfolio.com', false),
+('Portfolio Website', 'Personal portfolio website with responsive design and modern UI.', ARRAY['https://dummyimage.com/600x400/000/fff&text=Portfolio'], ARRAY['Next.js', 'TypeScript', 'TailwindCSS', 'Framer Motion'], 'https://github.com/tunguyen/portfolio', 'https://tuportfolio.com', true);
 
 INSERT INTO skills (name, level, icon_url, category) VALUES
 -- Frontend

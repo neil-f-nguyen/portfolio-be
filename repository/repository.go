@@ -54,8 +54,8 @@ func (r *Repository) GetProjects() ([]models.Project, error) {
 	var projects []models.Project
 	for rows.Next() {
 		var p models.Project
-		var desc, image, github, demo sql.NullString
-		var technologies pq.StringArray
+		var desc, github, demo sql.NullString
+		var image, technologies pq.StringArray
 		err := rows.Scan(
 			&p.ID, &p.Title, &desc, &image, &technologies, &github, &demo,
 			&p.Featured, &p.CreatedAt, &p.UpdatedAt,
@@ -65,7 +65,7 @@ func (r *Repository) GetProjects() ([]models.Project, error) {
 			return nil, err
 		}
 		p.Description = desc.String
-		p.Image = image.String
+		p.Image = models.StringArray(image)
 		p.Technologies = models.StringArray(technologies)
 		p.Github = github.String
 		p.Demo = demo.String
